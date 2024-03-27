@@ -15,14 +15,7 @@ import {
   toCamelCase,
   toClassName
 } from './aem.js';
-
-
-const AUDIENCES = {
-  mobile: () => window.innerWidth < 600,
-  desktop: () => window.innerWidth >= 600,
-  // define your custom audiences here as needed
-};
-
+import getAudiences from './utils.js';
 
 /**
  * Gets all the metadata elements that are in the given scope.
@@ -140,7 +133,7 @@ async function loadEager(doc) {
     || Object.keys(getAllMetadata('audience')).length) {
     // eslint-disable-next-line import/no-relative-packages
     const { loadEager: runEager } = await import('../plugins/experimentation/src/index.js');
-    await runEager(document, { audiences: AUDIENCES }, pluginContext);
+    await runEager(document, { audiences: getAudiences() }, pluginContext);
   }
 
 
@@ -188,7 +181,7 @@ async function loadLazy(doc) {
     || Object.keys(getAllMetadata('audience')).length)) {
     // eslint-disable-next-line import/no-relative-packages
     const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
-    await runLazy(document, { audiences: AUDIENCES }, pluginContext);
+    await runLazy(document, { audiences: getAudiences() }, pluginContext);
   }
 }
 

@@ -76,3 +76,173 @@ main .hero img {
   text-align: center;
 }
 
+#log-in {
+  position: absolute;
+  width: 370px;
+  height: 392px;
+  left: 909px;
+  top: -110px;
+  overflow: visible;
+  background-color: white;
+}
+#log-in .login-form__message {
+  overflow: visible;
+  padding: 40px 40px 40px 40px;
+  width: 157px;
+  white-space: nowrap;
+  line-height: 30px;
+  margin-top: -3px;
+  text-align: left;
+  font-family: Adobe Clean;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: rgba(44,44,44,1);
+}
+#log-in .error_message {
+  font-size: 14px;
+  color: red;
+  margin-bottom: -30px;
+}
+#log-in .login-form__input {
+  width: 290px;
+  height: 65.5px;
+  overflow: visible;
+  padding: 0 0 15px 40px;
+}
+#log-in .login-form__input input::placeholder {
+  color: rgba(129,138,150,1);
+  opacity: 1; /* Firefox */
+}
+
+#log-in .login-form__input input::-ms-input-placeholder { /* Edge 12 -18 */
+  color: rgba(129,138,150,1);
+}
+#log-in .login-form__label {
+  overflow: visible;
+  width: 61px;
+  white-space: nowrap;
+  line-height: 20px;
+  margin-top: -3px;
+  text-align: left;
+  font-family: Adobe Clean;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(44,44,44,1);
+  padding-bottom: 9px;
+}
+#log-in .login-form__input input {
+  overflow: visible;
+  padding-left: 20px;
+  width: 265px;
+  height: 40px;
+  white-space: nowrap;
+  line-height: 20px;
+  margin-top: -2px;
+  text-align: left;
+  font-family: Adobe Clean;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  border: hidden;
+  background-color: rgba(243, 242, 246, 1);
+}
+#login-submit {
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+}
+#log-in .login-form__submit {
+  width: 300px;
+  height: 40px;
+  overflow: visible;
+  padding: 10px 30px 10px 30px;
+}
+#loginButton {
+  font-family: var(--body-font-family);
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 2px solid transparent;
+  padding: 10px 30px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--background-color);
+  background-color: var(--link-color);
+  margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 30px;
+}
+.login-form__forgot-password {
+  overflow: visible;
+  white-space: nowrap;
+  line-height: 20px;
+  margin-top: 20px;
+  text-align: left;
+  font-family: Adobe Clean;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: rgba(44, 44, 44, 1);
+  text-align: center;
+}
+
+.user-info {
+  position: absolute;
+  width: 370px;
+  height: 245px;
+  left: 909px;
+  top: -35px;
+  overflow: visible;
+  background-color: white;
+}
+
+.user-info .dashboard-mini {
+  overflow: visible;
+  padding: 40px 40px 40px 40px;
+  text-align: left;
+  font-family: Adobe Clean;
+  color: rgba(44,44,44,1);
+}
+
+.dashboard-mini .dashboard-mini__welcome {
+  width: 157px;
+  white-space: nowrap;
+  line-height: 30px;
+  margin-top: -3px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.dashboard-mini__account-balance-heading {
+  width: 140px;
+  white-space: nowrap;
+  line-height: 18px;
+  margin-top: -1px;
+  text-align: left;
+  font-family: Adobe Clean;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  color: rgba(128,128,128,1);
+  text-transform: uppercase;
+}
+
+.dashboard-mini__account-balance-value {
+  width: 140px;
+  white-space: nowrap;
+  line-height: 18px;
+  margin-top: 15px;
+  text-align: left;
+  font-family: Adobe Clean;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  color: rgba(44,44,44,1);
+}

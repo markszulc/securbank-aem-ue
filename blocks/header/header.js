@@ -1,8 +1,13 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { getActiveAudiences } from '../../scripts/utils.js';
 import { loadFragment } from '../fragment/fragment.js';
+import authenticate from './auth.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
+const LOGIN_FORM = `<button type="button" aria-label="Login">
+<span>Sign in</span>
+</button>`;
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -86,6 +91,19 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+export function decorateNavAuth() {
+  const auth = document.getElementsByClassName('nav-auth')[0];
+  auth.innerHTML = `<button type="button" id="logout" aria-label="Login">
+            <span>Sign out</span>
+          </button>`;
+    const logoutButton = auth.children[0];
+    logoutButton.addEventListener("click", () => {
+      auth.innerHTML = LOGIN_FORM;
+      window.localStorage.removeItem('auth');
+      location.reload();
+    });
+}
+
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -140,6 +158,51 @@ export default async function decorate(block) {
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+
+  // login section
+  const auth = document.createElement('div');
+  auth.classList.add('nav-auth');
+  console.log(getActiveAudiences());
+  if(window.localStorage.getItem("auth") === null) {
+    auth.innerHTML = LOGIN_FORM;
+    auth.addEventListener('click', () => {
+      const loginForm = document.getElementsByClassName('login-form')[0]; 
+      loginForm.style.display = "block"
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const username = document.getElementById('userName').value;
+        const password = document.getElementById('password').value;
+
+        authenticate(username, password).then((user) => {
+          console.log(user)
+          const auth = document.getElementsByClassName('nav-auth')[0];
+          auth.innerHTML = `<button type="button" id="logout" aria-label="Login">
+            <span>Sign out</span>
+          </button>`;
+          const logoutButton = document.getElementById("logout");
+          logoutButton.addEventListener("click", () => {
+            auth.innerHTML = LOGIN_FORM;
+            window.localStorage.removeItem('auth');
+            const loginForm = document.getElementsByClassName('login-form')[0];
+            loginForm.style.display = 'none';
+          });
+          
+        });
+        // handle submit
+      });
+    });
+  } else {
+    auth.innerHTML = `<button type="button" id="logout" aria-label="Login">
+            <span>Sign out</span>
+          </button>`;
+    const logoutButton = auth.children[0];
+    logoutButton.addEventListener("click", () => {
+      window.localStorage.removeItem('auth');
+      location.reload();
+    });
+  }
+  
+  nav.append(auth);
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';

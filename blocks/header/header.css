@@ -278,3 +278,8 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+header nav .nav-auth button {
+  color: var(--text-color);
+  background-color: rgba(243, 242, 246, 1);
+}
